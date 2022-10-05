@@ -1,0 +1,28 @@
+
+
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "products": {
+      "type": "array",
+      "items": {}
+    },
+    "total": {
+      "type": "integer"
+    },
+    "skip": {
+      "type": "integer"
+    },
+    "limit": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "products",
+    "total",
+    "skip",
+    "limit"
+  ]
+}
+
