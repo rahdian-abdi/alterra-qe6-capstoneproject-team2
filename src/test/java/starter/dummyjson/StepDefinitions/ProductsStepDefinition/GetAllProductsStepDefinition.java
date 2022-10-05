@@ -6,12 +6,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
+import org.hamcrest.Matchers;
 import starter.dummyjson.API.ProductsAPI.GetAllProductsApi;
-import starter.dummyjson.DummyjsonResponses.ProductsResponses;
 import io.restassured.module.jsv.JsonSchemaValidator;
+import starter.dummyjson.DummyjsonResponses.ProductsResponses;
 import java.io.File;
-
-import static org.hamcrest.Matchers.equalTo;
 
 public class GetAllProductsStepDefinition {
     @Steps
@@ -49,16 +48,51 @@ public class GetAllProductsStepDefinition {
     public void sendRequestGetAllSearchProducts() {
         SerenityRest.when().get(GetAllProductsApi.GET_ALL_PRODUCTS_WITH_KEYWORD);
     }
-
+    @And("Should return any data that contain {string}")
+    public void shouldReturnAnyDataThatContain(String keyword) {
+        SerenityRest.then().assertThat().body(ProductsResponses.PRODUCTS, Matchers.anything(keyword));
+    }
     @And("Get all products from search query JSON schema")
     public void getAllProductsFromSearchQueryJSONSchema() {
         File json = new File(GetAllProductsApi.JSON_FILE+"/SchemaValidator/Products/GetAllProductsWithKeywordJsonSchema.json");
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
     }
     // SCENARIO 4
-    @And("Get all precluded products from search query JSON schema")
-    public void getAllPrecludedProductsFromSearchQueryJSONSchema() {
-        File json = new File(GetAllProductsApi.JSON_FILE+"/SchemaValidator/Products/GetAllProductsWithPrecludedKeywordJsonSchema.json");
+    @And("Should not contain any data")
+    public void shouldNotContainAnyData() {
+        SerenityRest.then().assertThat().body(ProductsResponses.PRODUCTS, Matchers.hasSize(0));
+    }
+    // SCENARIO 5
+    @Given("Get all products categories from {string} parameter")
+    public void getAllProductsCategories(String parameter) {
+        getAll.getAllProductsCategories(parameter);
+    }
+    @When("Send request get all categories")
+    public void sendRequestGetAllCategories() {
+        SerenityRest.when().get(GetAllProductsApi.GET_ALL_CATEGORIES);
+    }
+    @And("Get all products categories JSON schema")
+    public void getAllProductsCategoriesJSONSchema() {
+        File json = new File(GetAllProductsApi.JSON_FILE+"/SchemaValidator/Products/GetAllProductsCategoriesJsonSchema.json");
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
     }
+    // SCENARIO 6
+    @Given("Get all products from {string} categories")
+    public void getAllProductsFromCategories(String keyword) {
+        getAll.getAllProductsCategories(keyword);
+    }
+    @When("Send request to get all products from categories")
+    public void sendRequestToGetAllProductsFromCategories() {
+        SerenityRest.when().get(GetAllProductsApi.GET_ALL_PRODUCTS_BY_CATEGORY);
+    }
+    @And("Should return {string} on the category")
+    public void shouldReturnOnTheCategory(String keyword) {
+        SerenityRest.then().body(ProductsResponses.CATEGORY, Matchers.hasItem(keyword));
+    }
+    @And("Get all products from categories JSON schema")
+    public void getAllProductsFromCategoriesJSONSchema() {
+        File json = new File(GetAllProductsApi.JSON_FILE+"/SchemaValidator/Products/GetAllProductsByCategoriesJsonSchema.json");
+        SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
+    }
+    //SCENARIO 7
 }
