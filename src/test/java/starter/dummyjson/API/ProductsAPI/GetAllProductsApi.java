@@ -9,9 +9,14 @@ public class GetAllProductsApi {
     public static String JSON_FILE = DIR+"/src/test/resources/JSON";
 
     public static String GET_ALL_PRODUCTS = URL+"/{parameter}";
+    public static String GET_ALL_PRODUCTS_WITH_KEYWORD = URL+"/products/search?q={keyword}";
 
     @Step("Get list all products")
     public void getAllProducts(String parameter) {
         SerenityRest.given().pathParam("parameter", parameter);
+    }
+    @Step("Get all products with keyword")
+    public void getAllProductsWithKeyword(String keyword) {
+        SerenityRest.given().pathParam("keyword", keyword);
     }
 }
