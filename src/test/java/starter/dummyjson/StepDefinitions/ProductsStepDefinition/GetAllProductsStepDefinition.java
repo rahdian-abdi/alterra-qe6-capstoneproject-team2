@@ -11,6 +11,7 @@ import starter.dummyjson.API.ProductsAPI.GetAllProductsApi;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import starter.dummyjson.DummyjsonResponses.ProductsResponses;
 import java.io.File;
+import static org.hamcrest.Matchers.*;
 
 public class GetAllProductsStepDefinition {
     @Steps
@@ -50,7 +51,8 @@ public class GetAllProductsStepDefinition {
     }
     @And("Should return any data that contain {string}")
     public void shouldReturnAnyDataThatContain(String keyword) {
-        SerenityRest.then().assertThat().body(ProductsResponses.PRODUCTS, Matchers.anything(keyword));
+        SerenityRest.then().assertThat()
+                .body(Matchers.containsString(keyword));
     }
     @And("Get all products from search query JSON schema")
     public void getAllProductsFromSearchQueryJSONSchema() {

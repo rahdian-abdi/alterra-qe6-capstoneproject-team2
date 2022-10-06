@@ -40,7 +40,7 @@ public class GetProductStepDefinition {
     // SCENARIO 9
     @And("Body response should display message {string}")
     public void bodyResponseShouldDisplayMessage(String message) {
-        SerenityRest.then().assertThat().body(ProductsResponses.MESSAGE_NOT_FOUND, Matchers.anything(message));
+        SerenityRest.then().assertThat().body(ProductsResponses.MESSAGE_NOT_FOUND, Matchers.containsString(message));
     }
     @And("Get single product unregistered JSON schema")
     public void getSingleProductUnregisteredJSONSchema() {
