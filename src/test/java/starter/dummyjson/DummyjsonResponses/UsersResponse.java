@@ -5,4 +5,5 @@ public class UsersResponse {
     public static String fisrtName = "firstName";
     public static String lastName = "lastName";
     public static String maidenName = "maidenName";
+
 }
