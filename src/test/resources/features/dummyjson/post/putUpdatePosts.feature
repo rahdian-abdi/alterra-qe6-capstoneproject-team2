@@ -4,7 +4,7 @@ Feature: Put Update Posts on Dummyjson.com
     Given  Put update post with valid posts id 1
     When Send request put update post
     Then Should return 200 OK
-    And Response body should contain posts id 1
+    And Response posts body should contain posts title "Buku kita bersama"
     And Put Update Posts json Schema Validator
 
   Scenario: Update post with invalid id
@@ -23,8 +23,3 @@ Feature: Put Update Posts on Dummyjson.com
     Given  Put update post with unregistered id 200 and invalid value
     When Send request put update post
     Then Should return 404 Not Found
-
-#  Scenario: Update post without id
-#    Given  Put update post without id
-#    When Send request put update post
-#    Then Should return 404 Not Found

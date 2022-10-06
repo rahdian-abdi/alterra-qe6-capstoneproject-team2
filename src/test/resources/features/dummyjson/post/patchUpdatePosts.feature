@@ -1,11 +1,14 @@
 Feature: Patch Update Posts on Dummyjson.com
 
-  Scenario: Patch Update post with valid Posts id
-    Given  Patch update post with valid id 1
+  Scenario Outline: Patch Update post with valid Posts id
+    Given  Patch update post with valid id <id>
     When Send request patch update post
     Then Should return 200 OK
-    And Response body should contain post id 1
+    And Response posts body should contain posts title "<title>"
     And Patch Update posts json schema validator
+    Examples:
+    |id|title|
+    |1 |Buku kita bersama|
 
   Scenario: Patch Update post with invalid Posts id
     Given  Patch update post with invalid id "tes"

@@ -1,3 +1,11 @@
 {
-  "title": "Buku kita bersama"
+  "title": "Buku kita bersama",
+  "body": "Bukunya bagus",
+  "userId": 9,
+  "tags": [
+    "history",
+    "american",
+    "crime"
+  ],
+  "reactions": 2
 }

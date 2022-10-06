@@ -20,7 +20,7 @@ public class PatchUpdatePostsStepDef {
 
     @Given("Patch update post with valid id {int}")
     public void patch_update_post_with_valid_id(Integer id) {
-        File json = new File(PostAPI.JSON_FILE+"/PatchUpdatePost.json");
+        File json = new File(PostAPI.JSON_FILE+"/PatchUpdatePostValid.json");
         postAPI.patchUpdatePost(id,json);
     }
     @When("Send request patch update post")
@@ -51,6 +51,11 @@ public class PatchUpdatePostsStepDef {
         File json = new File (PostAPI.JSON_VALIDATOR+"/PatchUpdatePostsJsonSchemaValidator.json");
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
 
+    }
+    @And("Response posts body should contain posts title {string}")
+    public void responsePostsBodyShouldContainPostsTitle(String title) {
+        SerenityRest.then()
+                .body(PostsResponses.TITLE,equalTo(title));
     }
 
 }
