@@ -5,4 +5,5 @@ public class ProductsResponses {
     public static String PRODUCTS = "products";
     public static String PRODUCT_ID = "id";
     public static String MESSAGE_NOT_FOUND = "message";
+    public static String IS_DELETED = "isDeleted";
 }

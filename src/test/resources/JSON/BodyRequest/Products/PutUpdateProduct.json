@@ -1,0 +1,12 @@
+{
+  "title": "Zephyrus G14",
+  "description": "lorem ipsum dolor sit amet",
+  "price": 300,
+  "discountPercentage": 17,
+  "rating": 4.5,
+  "stock": 100,
+  "brand": "Asus",
+  "category": "laptops",
+  "thumbnail": "...",
+  "images": ["...", "...", "..."]
+}
