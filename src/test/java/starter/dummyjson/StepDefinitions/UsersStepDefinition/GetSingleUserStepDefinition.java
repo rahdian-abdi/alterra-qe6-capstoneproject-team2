@@ -2,6 +2,7 @@ package starter.dummyjson.StepDefinitions.UsersStepDefinition;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import net.serenitybdd.rest.SerenityRest;
@@ -39,9 +40,22 @@ public class GetSingleUserStepDefinition {
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));}
 
 
+    @Given("Get single user with unregistered id {}")
+    public void getSingleUserWithUnregisteredId(int id) {getAllUsersApi.getSingleUSer(id);}
 
 
+    @Given("Get Single user with invalid decimal id {}")
+    public void getSingleUserWithInvalidDecimalId(float id ) {getAllUsersApi.getSingleUSerDecimal(id);}
 
+    @Given("Get single user with invalid id using a letter {}")
+    public void getSingleUserWithInvalidIdUsingALetter(String letter) {getAllUsersApi.getSingleUSerInvalidUsingLetters(letter);
+    }
 
+    @When("Send request get single user character")
+    public void sendRequestGetSingleUserCharacter() {SerenityRest.when().get(GetAllUsersApi.GET_SINGLE_USER_CHARACTER);
+    }
 
+    @Then("Status should return {int} Bad Request")
+    public void statusShouldReturnOOBadRequest(int Bad_Request) { SerenityRest.then().statusCode(Bad_Request);
+    }
 }

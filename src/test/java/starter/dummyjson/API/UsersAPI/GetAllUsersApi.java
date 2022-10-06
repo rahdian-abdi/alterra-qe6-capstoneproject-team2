@@ -14,6 +14,7 @@ public class GetAllUsersApi {
     public static String GET_ALL_USER_INVALID_3_NUMBERS = URl +"/users{numbers}";
     public static String GET_ALL_USER_INVALID_3_CHARACTERS = URl +"/users{characters}";
     public static String GET_SINGLE_USER = URl +"/users/{id}";
+    public static String GET_SINGLE_USER_CHARACTER = URl +"/users/{letter}";
     public static final String JSON_SCHEMA_GET_ALL_USER = DIR + "/src/test/resources/JSON.SchemaValidator.Users";
 
 
@@ -47,7 +48,13 @@ public class GetAllUsersApi {
             .pathParam("id", id);}
 
 
+    @Step ("Get single user decimal")
+    public void getSingleUSerDecimal (float id) {SerenityRest.given()
+            .pathParam("id", id);}
 
+    @Step ("Get single user invalid using letters")
+    public void getSingleUSerInvalidUsingLetters (String letter) {SerenityRest.given()
+            .pathParam("letter", letter);}
 
 
 }
