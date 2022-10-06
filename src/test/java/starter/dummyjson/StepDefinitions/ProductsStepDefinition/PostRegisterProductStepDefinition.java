@@ -15,10 +15,10 @@ import java.io.File;
 public class PostRegisterProductStepDefinition {
     @Steps
     PostRegisterProductApi post;
-    @Given("Post register product valid parameter")
-    public void post_register_product_valid_parameter() {
+    @Given("Post register product")
+    public void post_register_product() {
         File json = new File(PostRegisterProductApi.JSON_FILE+"/BodyRequest/Products/PostRegisterProduct.json");
-        post.postValidParameter(json);
+        post.postBodyRequest(json);
     }
     @When("Send request post product")
     public void send_request_post_product() {
@@ -32,5 +32,31 @@ public class PostRegisterProductStepDefinition {
     public void post_register_product_valid_parameter_json_schema() {
         File json = new File(GetAllProductsApi.JSON_FILE+"/SchemaValidator/Products/PostRegisterProductJsonSchema.json");
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
+    }
+
+    @When("Send request post product invalid parameter")
+    public void sendRequestPostProductInvalidParameter() {
+        SerenityRest.when().post(PostRegisterProductApi.POST_INVALID_PARAMETER);
+    }
+
+    @Given("Post register product incomplete body request")
+    public void postRegisterProductIncompleteBodyRequest() {
+        File json = new File(PostRegisterProductApi.JSON_FILE+"/BodyRequest/Products/PostRegisterProductIncomplete.json");
+        post.postBodyRequest(json);
+    }
+    @Then("Should return {int} Bad Request status code")
+    public void shouldReturnBadRequestStatusCode(int statusCode) {
+        SerenityRest.then().statusCode(statusCode);
+    }
+    @Given("Post register product empty body request")
+    public void postRegisterProductEmptyBodyRequest() {
+        File json = new File(PostRegisterProductApi.JSON_FILE+"/BodyRequest/Products/PostRegisterProductEmpty.json");
+        post.postBodyRequest(json);
+    }
+
+    @Given("Post register product invalid data type body request")
+    public void postRegisterProductInvalidDataTypeBodyRequest() {
+        File json = new File(PostRegisterProductApi.JSON_FILE+"/BodyRequest/Products/PostRegisterProductInvalidDataType.json");
+        post.postBodyRequest(json);
     }
 }
