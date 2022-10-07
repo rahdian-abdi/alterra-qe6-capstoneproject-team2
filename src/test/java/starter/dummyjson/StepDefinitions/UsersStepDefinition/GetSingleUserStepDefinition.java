@@ -27,8 +27,8 @@ public class GetSingleUserStepDefinition {
     public void sendRequestGetSIngleUSer () {
         SerenityRest.when().get(GetAllUsersApi.GET_SINGLE_USER);}
 
-    @And("Response body should contain {} {} {} {}")
-    public void responseBodyShouldContain( int id, String firstName, String lastName, String maidenName) {
+    @And("Response on body should contain {} {} {} {}")
+    public void responseOnBodyShouldContain( int id, String firstName, String lastName, String maidenName) {
         SerenityRest.then()
                 .body(UsersResponse.ID, equalTo(id))
                 .body(UsersResponse.fisrtName, equalTo(firstName))

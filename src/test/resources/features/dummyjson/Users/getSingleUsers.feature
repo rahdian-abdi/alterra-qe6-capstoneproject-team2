@@ -4,7 +4,7 @@ Feature: Get Single User at Dummyjson.com
     Given Get single user with valid id <id>
     When Send request get single user
     Then Status should return 200 OK
-    And Response body should contain <id> <firstName> <lastName> <maidenName>
+    And Response on body should contain <id> <firstName> <lastName> <maidenName>
     And Get single user json schema validator
     Examples:
     |id|   firstName   | lastName  | maidenName  |
@@ -19,7 +19,7 @@ Feature: Get Single User at Dummyjson.com
     Given Get single user with valid id <id>
     When Send request get single user
     Then Status should return 200 OK
-    And  Response body should contain <id> <firstName> <lastName> <maidenName>
+    And  Response on body should contain <id> <firstName> <lastName> <maidenName>
     And  Get single user json schema validator
     Examples:
         |id|   firstName   | lastName   |  maidenName   |

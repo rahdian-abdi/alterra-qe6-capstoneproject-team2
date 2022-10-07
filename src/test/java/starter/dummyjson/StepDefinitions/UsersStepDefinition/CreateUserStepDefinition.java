@@ -52,8 +52,8 @@ public class CreateUserStepDefinition {
     public void createUserWithValidRegisteredIdJsonSchemaValidation() {File json = new File(CreateUsersApi.CREATE_USER_JSON_SCHEMA_VALIDATOR + "/CreateUserwithRegisteredIdJsonSchema.json");
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));}
 
-    @Given("Create user with special chacarter in on body data")
-    public void createUserWithSpecialChacarterInOnBodyData() {File json = new File(CreateUsersApi.CREATE_USER_BODY_REQUEST + "/CreateUserwithSpecialCharacter.json");
+    @Given("Create user with special character in on body data")
+    public void createUserWithSpecialCharacterInOnBodyData() {File json = new File(CreateUsersApi.CREATE_USER_BODY_REQUEST + "/CreateUserwithSpecialCharacter.json");
         createUsersApi.createUserBodyData(json);}
 
     @And("Create user with special character json schema validation")

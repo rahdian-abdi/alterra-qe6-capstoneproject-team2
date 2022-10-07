@@ -20,7 +20,7 @@ Feature: Create user from Dummyjson.com
     And Create user with valid registered id json schema validation
 
   Scenario: Create User with Special Character Id
-    Given Create user with special chacarter in on body data
+    Given Create user with special character in on body data
     When Send request create user
     Then Status should return 200 OK
     And Body should return to unused id 101 automatically with body data
