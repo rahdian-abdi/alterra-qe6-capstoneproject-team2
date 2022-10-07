@@ -1,13 +1,11 @@
 package starter.dummyjson.StepDefinitions.PostsStepDef;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 import starter.dummyjson.API.PostsAPI.PostAPI;
-import starter.dummyjson.API.ProductsAPI.GetAllProductsApi;
 import starter.dummyjson.DummyjsonResponses.PostsResponses;
 
 import java.io.File;
@@ -35,11 +33,8 @@ public class GetSinglePostsStepDef {
         File json = new File (PostAPI.JSON_VALIDATOR+"/GetSinglePostsJsonSchemaValidator.json");
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
     }
-
     @Given("Get single post with parameter {string}")
     public void getSinglePostWithParameter(String id) {
         postAPI.setGetSinglePostInvalid(id);
     }
-
-
 }

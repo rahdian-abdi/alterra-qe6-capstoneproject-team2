@@ -1,13 +1,11 @@
 package starter.dummyjson.StepDefinitions.PostsStepDef;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 import starter.dummyjson.API.PostsAPI.PostAPI;
-import starter.dummyjson.API.ProductsAPI.GetAllProductsApi;
 import starter.dummyjson.DummyjsonResponses.PostsResponses;
 
 import java.io.File;
@@ -32,31 +30,19 @@ public class PatchUpdatePostsStepDef {
         File json = new File(PostAPI.JSON_FILE+"/PatchUpdatePost.json");
         postAPI.patchUpdatePostInvalid(id,json);
     }
-    @Given("Patch update post without id")
-    public void patch_update_post_without_id() {
-        File json = new File(PostAPI.JSON_FILE+"/PatchUpdatePost.json");
-        postAPI.patchUpdatePostEmpty(json);
-    }
     @Given("Patch update post with unregistered id {int}")
     public void patch_update_post_with_unregistered_id(int id) {
         File json = new File(PostAPI.JSON_FILE+"/PatchUpdatePost.json");
         postAPI.patchUpdatePost(id,json);
     }
-    @And("Response body should contain post id {int}")
-    public void responseBodyShouldContainPostId(int id) {
-        SerenityRest.then().body(PostsResponses.ID,equalTo(id));
-    }
     @And("Patch Update posts json schema validator")
     public void patchUpdatePostsJsonSchemaValidator() {
         File json = new File (PostAPI.JSON_VALIDATOR+"/PatchUpdatePostsJsonSchemaValidator.json");
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
-
     }
-    @And("Response posts body should contain posts title {string} and {string}")
-    public void responsePostsBodyShouldContainPostsTitle(String title,String id) {
-        SerenityRest.then()
-                .body(PostsResponses.ID,equalTo(id))
-                .body(PostsResponses.TITLE,equalTo(title));
+    @And("Response posts body should contain posts title {string}")
+    public void responsePostsBodyShouldContainPostsTitle(String title) {
+        SerenityRest.then().body(PostsResponses.TITLE,equalTo(title));
     }
 
 }

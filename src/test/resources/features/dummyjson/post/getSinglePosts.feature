@@ -8,14 +8,19 @@ Feature: Get Single Posts on Dummyjson.com
     Examples:
       |id|
       |1 |
+      |92|
+      |100|
+      |150|
 
   Scenario Outline: Get single post with String id
     Given Get single post with parameter "<id>"
     When Send request get single post
     Then Should return 400 Bad Request
     Examples:
-      |id   |
-      |satu |
+      |id|
+      |tes|
+      |ZYG|
+
 
   Scenario Outline: Get single post with Special Char id
     Given Get single post with parameter "<id>"
@@ -23,8 +28,15 @@ Feature: Get Single Posts on Dummyjson.com
     Then Should return 400 Bad Request
     Examples:
       |id  |
-      |!@# |
-  Scenario: Get single post with unregistered id
-    Given Get single post with parameter 200
+      |!@#%|
+      |%@#$|
+  Scenario Outline: Get single post with unregistered id
+    Given Get single post with parameter <id>
     When Send request get single post
     Then Should return 404 Not Found
+    Examples:
+      |id |
+      |200|
+      |151|
+      |6154|
+      |1356|
