@@ -1,0 +1,61 @@
+{
+  "id" : 1,
+  "firstName": "Jono",
+  "lastName": "Wawa",
+  "maidenName": "Sembriwiw",
+  "age": 66,
+  "gender": "male",
+  "email": "wawa@sohu.com",
+  "phone": "+628 123 456 789",
+  "username": "NYOYO",
+  "password": "sickness",
+  "birthDate": "1994 -10-05",
+  "image": "https://sickness.org/hicveldicta.png",
+  "bloodGroup": "A−",
+  "height": 175,
+  "weight": 100,
+  "eyeColor": "Black",
+  "hair": {
+    "color": "Black",
+    "type": "Afro"
+  },
+  "domain": "slashdot.org",
+  "ip": "117.29.86.254",
+  "address": {
+    "address": "Anfield Road",
+    "city": "Liverpool",
+    "coordinates": {
+      "lat": 38.867033,
+      "lng": -76.979235
+    },
+    "postalCode": "L4 0TH",
+    "state": "Merseyside"
+  },
+  "macAddress": "13:69:BA:56:A3:74",
+  "university": "Liverpool FC",
+  "bank": {
+    "cardExpire": "07/24",
+    "cardNumber": "14256218151",
+    "cardType": "Maestro",
+    "currency": "Poundsterling",
+    "iban": "NO17 0695 2754 967"
+  },
+  "company": {
+    "address": {
+      "address": "Anfield road",
+      "city": "Liverpool",
+      "coordinates": {
+        "lat": 38.867033,
+        "lng": -76.979235
+      },
+      "postalCode": "L4 0TH",
+      "state": "Merseyside"
+    },
+    "department": "Medic",
+    "name": "Salah",
+    "title": "Doctor"
+  },
+  "ein": "20-9487066",
+  "ssn": "661-64-2976",
+  "userAgent": " Chrome/12.0.702.0 "
+}
