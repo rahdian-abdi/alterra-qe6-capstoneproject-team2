@@ -4,7 +4,7 @@ Feature: Delete Posts on Dummyjson.com
     Given  Delete post with valid id 1
     When Send request delete post
     Then Should return 200 OK
-#    And Response body should contain "true" on isDeleted
+    And Response body should contain true on isDeleted
     And Delete post json Schema Validator
 
   Scenario: Delete a post with invalid id

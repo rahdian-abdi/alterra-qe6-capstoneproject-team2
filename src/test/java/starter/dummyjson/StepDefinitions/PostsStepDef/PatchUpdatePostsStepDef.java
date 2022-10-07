@@ -52,9 +52,10 @@ public class PatchUpdatePostsStepDef {
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
 
     }
-    @And("Response posts body should contain posts title {string}")
-    public void responsePostsBodyShouldContainPostsTitle(String title) {
+    @And("Response posts body should contain posts title {string} and {string}")
+    public void responsePostsBodyShouldContainPostsTitle(String title,String id) {
         SerenityRest.then()
+                .body(PostsResponses.ID,equalTo(id))
                 .body(PostsResponses.TITLE,equalTo(title));
     }
 

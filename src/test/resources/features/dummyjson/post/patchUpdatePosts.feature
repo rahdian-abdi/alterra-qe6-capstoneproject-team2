@@ -4,7 +4,7 @@ Feature: Patch Update Posts on Dummyjson.com
     Given  Patch update post with valid id <id>
     When Send request patch update post
     Then Should return 200 OK
-    And Response posts body should contain posts title "<title>"
+    And Response posts body should contain posts title "<title>" and "1"
     And Patch Update posts json schema validator
     Examples:
     |id|title|
