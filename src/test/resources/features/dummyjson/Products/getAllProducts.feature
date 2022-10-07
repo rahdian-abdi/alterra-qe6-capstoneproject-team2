@@ -4,6 +4,7 @@ Feature: Get All Products on Dummyjson.com
     Given Get all products from "products" parameter
     When Send request get all products
     Then Should return 200 OK status code
+    Then Should return key "products"
     And Get all products JSON schema
   @negative
   Scenario: Get all products with invalid parameter
