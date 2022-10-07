@@ -6,4 +6,6 @@ public class UsersResponse {
     public static String lastName = "lastName";
     public static String maidenName = "maidenName";
 
+    public static String isDeleted = "isDeleted";
+
 }
