@@ -14,11 +14,8 @@ public class PostAPI {
 
     public static String GET_ALL_POSTS = URL+"/{parameter}";
     public static String GET_SINGLE_POST = URL+"/posts/{id}";
-    public static String GET_SEARCH_POST_EMPTY = URL+"/posts/{search}";
-    public static String GET_SEARCH_POST = URL+"/posts/search?q={key}";
     public static String CREATE_NEW_POST = URL+"/posts/add";
     public static String PUT_UPDATE_POST = URL+"/posts/{id}";
-    public static String PUT_UPDATE_POST_EMPTY = URL+"/posts";
     public static String DELETE_POST = URL+"/posts/{id}";
     public static String GET_ALL_POSTS_BY_USER_ID = URL+"/posts/user/{id}";
     public static String GET_POSTS_COMMENTS = URL+"/posts/{id}/comments";
@@ -58,10 +55,6 @@ public class PostAPI {
     @Step ("Get Search post empty")
     public void setGetSearchPostEmpty(String search){
         SerenityRest.given().pathParam("search",search);
-    }
-    @Step ("Get Search post")
-    public void setGetSearchPost(String key){
-        SerenityRest.given().pathParam("key",key);
     }
     @Step ("Post new post with valid id")
     public void postNewPostWithValidId(File json){

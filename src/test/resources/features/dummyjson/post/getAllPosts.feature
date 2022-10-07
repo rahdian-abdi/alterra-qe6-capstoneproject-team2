@@ -5,8 +5,13 @@ Feature: Get All Posts on Dummyjson.com
     Then Should return 200 OK
     And Response body should contain total posts 150
     And Get all posts json Schema Validator
-  Scenario: Get all posts with invalid parameter
-    Given Get all posts with parameter "post"
+  Scenario Outline: Get all posts with invalid parameter
+    Given Get all posts with parameter "<path>"
     When Send request get all post
     Then Should return 404 Not Found
+    Examples:
+      |path|
+      |post |
+      |posting|
+      |postz|
 

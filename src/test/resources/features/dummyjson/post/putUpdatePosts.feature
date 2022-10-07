@@ -1,11 +1,17 @@
 Feature: Put Update Posts on Dummyjson.com
 
-  Scenario: Update post with valid id
-    Given  Put update post with valid posts id 1
+  Scenario Outline: Update post with valid id
+    Given  Put update post with valid posts id <id>
     When Send request put update post
     Then Should return 200 OK
-    And Response posts body should contain posts title "Buku kita bersama" and "1"
+    And Response posts body should contain posts title "Buku kita bersama"
     And Put Update Posts json Schema Validator
+    Examples:
+      |id|
+      |1 |
+      |92|
+      |100|
+      |150|
 
   Scenario: Update post with invalid id
     Given  Put update post with invalid id "tes"
