@@ -30,6 +30,10 @@ public class GetAllProductsStepDefinition {
     public void should_return_ok_status_code(Integer statusCode) {
         SerenityRest.then().statusCode(statusCode);
     }
+    @Then("Should return key {string}")
+    public void shouldReturnKey(String keyword) {
+        SerenityRest.then().assertThat().body("$", hasKey(keyword));
+    }
     @Then("Get all products JSON schema")
     public void get_all_products_json_schema() {
         File json = new File(GetAllProductsApi.JSON_FILE+"/SchemaValidator/Products/GetAllProductsJsonSchema.json");

@@ -4,11 +4,14 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 import org.hamcrest.Matchers;
 import starter.dummyjson.API.ProductsAPI.GetAllProductsAuthApi;
 import starter.dummyjson.DummyjsonResponses.ProductsResponses;
+
+import java.io.File;
 
 import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.is;
@@ -35,11 +38,24 @@ public class GetAllProductsAuthStepDefinition {
 
     @And("Should return message contain {string} token or signature")
     public void shouldReturnMessageContainTokenSignature(String message) {
-        SerenityRest.then().assertThat().body(ProductsResponses.MESSAGE_NOT_FOUND, Matchers.containsString(message));
+        String result = ProductsResponses.MESSAGE_NOT_FOUND;
+        SerenityRest.then().assertThat().body(result.toLowerCase(), Matchers.containsString(message));
     }
 
     @Given("Get all product with expired token and parameter {string}")
     public void getAllProductWithExpiredTokenAndParameter(String parameter) {
         getAuth.getAllProductsExpiredAuth(parameter);
+    }
+
+    @And("Get authorization error JSON schema")
+    public void getAuthorizationErrorJSONSchema() {
+        File json = new File(GetAllProductsAuthApi.JSON_FILE+"/SchemaValidator/Products/ErrorAuthorizationJsonSchema.json");
+        SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
+    }
+
+    @And("Get authorization expired JSON schema")
+    public void getAuthorizationExpiredJSONSchema() {
+        File json = new File(GetAllProductsAuthApi.JSON_FILE+"/SchemaValidator/Products/ExpiredTokenJsonSchema.json");
+        SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
     }
 }

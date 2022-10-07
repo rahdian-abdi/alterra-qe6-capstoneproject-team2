@@ -10,9 +10,11 @@ Feature: Get All Authorization Products on Dummyjson.com
     When Send request get all product with token
     Then Should return 401 Unauthorized or 500 Bad Servers status code
     And Should return message contain "invalid" token or signature
+    And Get authorization error JSON schema
 
   Scenario: Get all product with expired token
     Given Get all product with expired token and parameter "auth"
     When Send request get all product with token
     Then Should return 401 Unauthorized or 500 Bad Servers status code
     And Should return message contain "Expired" token or signature
+    And Get authorization expired JSON schema
