@@ -10,11 +10,10 @@ public class PostRegisterProductApi {
     public static String URL = "https://dummyjson.com";
     public static String DIR = System.getProperty("user.dir");
     public static String JSON_FILE = DIR+"/src/test/resources/JSON";
-    public static String POST_VALID_PARAMETER = URL+"/products/add";
-    public static String POST_INVALID_PARAMETER = URL+"/products/addzzz";
+    public static String POST_PARAMETER = URL+"/products/{parameter}";
 
     @Step("Post register product body request")
-    public void postBodyRequest(File json) {
-        SerenityRest.given().contentType(ContentType.JSON).body(json);
+    public void postBodyRequest(String parameter, File json) {
+        SerenityRest.given().contentType(ContentType.JSON).body(json).pathParam("parameter", parameter);
     }
 }

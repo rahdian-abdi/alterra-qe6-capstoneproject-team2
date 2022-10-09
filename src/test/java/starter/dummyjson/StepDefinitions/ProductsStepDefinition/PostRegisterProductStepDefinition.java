@@ -15,14 +15,14 @@ import java.io.File;
 public class PostRegisterProductStepDefinition {
     @Steps
     PostRegisterProductApi post;
-    @Given("Post register product")
-    public void post_register_product() {
+    @Given("Post register product with parameter {string}")
+    public void post_register_product_with_parameter(String parameter) {
         File json = new File(PostRegisterProductApi.JSON_FILE+"/BodyRequest/Products/PostRegisterProduct.json");
-        post.postBodyRequest(json);
+        post.postBodyRequest(parameter, json);
     }
     @When("Send request post product")
     public void send_request_post_product() {
-        SerenityRest.when().post(PostRegisterProductApi.POST_VALID_PARAMETER);
+        SerenityRest.when().post(PostRegisterProductApi.POST_PARAMETER);
     }
     @Then("Should return {int} OK or {int} Created status code")
     public void should_return_ok_or_created_status_code(Integer statusMain, Integer statusSecondary) {
@@ -36,27 +36,27 @@ public class PostRegisterProductStepDefinition {
 
     @When("Send request post product invalid parameter")
     public void sendRequestPostProductInvalidParameter() {
-        SerenityRest.when().post(PostRegisterProductApi.POST_INVALID_PARAMETER);
+        SerenityRest.when().post(PostRegisterProductApi.POST_PARAMETER);
     }
 
-    @Given("Post register product incomplete body request")
-    public void postRegisterProductIncompleteBodyRequest() {
+    @Given("Post register product incomplete body request with parameter {string}")
+    public void postRegisterProductIncompleteBodyRequestWithParameter(String parameter) {
         File json = new File(PostRegisterProductApi.JSON_FILE+"/BodyRequest/Products/PostRegisterProductIncomplete.json");
-        post.postBodyRequest(json);
+        post.postBodyRequest(parameter, json);
     }
     @Then("Should return {int} Bad Request status code")
     public void shouldReturnBadRequestStatusCode(int statusCode) {
         SerenityRest.then().statusCode(statusCode);
     }
-    @Given("Post register product empty body request")
-    public void postRegisterProductEmptyBodyRequest() {
+    @Given("Post register product empty body request with parameter {string}")
+    public void postRegisterProductEmptyBodyRequest(String parameter) {
         File json = new File(PostRegisterProductApi.JSON_FILE+"/BodyRequest/Products/PostRegisterProductEmpty.json");
-        post.postBodyRequest(json);
+        post.postBodyRequest(parameter, json);
     }
 
-    @Given("Post register product invalid data type body request")
-    public void postRegisterProductInvalidDataTypeBodyRequest() {
+    @Given("Post register product invalid data type body request with parameter {string}")
+    public void postRegisterProductInvalidDataTypeBodyRequest(String parameter) {
         File json = new File(PostRegisterProductApi.JSON_FILE+"/BodyRequest/Products/PostRegisterProductInvalidDataType.json");
-        post.postBodyRequest(json);
+        post.postBodyRequest(parameter, json);
     }
 }
