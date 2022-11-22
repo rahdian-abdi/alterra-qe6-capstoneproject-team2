@@ -1,6 +1,6 @@
 <div align="center">
   <a href="">
-    <img src="./dummyjson.png" width="400" height="144">
+    <img src="./dummyjson.PNG" width="400" height="144">
   </a>
 
   <p align="center">
@@ -62,7 +62,7 @@
   [![GitHub](https://img.shields.io/badge/-eltodoan-white?style=for-the-badge&logo=github&logoColor=black)](https://github.com/eltodoan)
   
   [![LinkedIn](https://img.shields.io/badge/-Havid%20Nursahgandi-white?style=for-the-badge&logo=linkedin&logoColor=blue)](https://www.linkedin.com/in/havidnursahgandi/)
-  [![GitHub](https://img.shields.io/badge/-eltodoan-white?style=for-the-badge&logo=github&logoColor=black)](https://github.com/hvdnursgn)
+  [![GitHub](https://img.shields.io/badge/-hvdn-white?style=for-the-badge&logo=github&logoColor=black)](https://github.com/hvdn)
 <!--
 # Testing Documentation
 Testing documentaion for Manual Testing (https://docs.google.com/spreadsheets/d/1O6KXBNgfuOaJJmRbachmq_b3TQBppHi5DMILPnsZIZk/edit?pli=1#gid=1278518793)
